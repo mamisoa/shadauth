@@ -1,5 +1,3 @@
-import { DateTime } from "next-auth/providers/kakao";
-
 export interface FormState<T> {
 	errors?: StringMap;
 	successMsg?: string;
@@ -34,7 +32,7 @@ interface User {
 	updatedAt: Date;
 }
 
-export interface SessionSchema {
+export interface SessionType {
 	user: User;
 	expires: string;
 }

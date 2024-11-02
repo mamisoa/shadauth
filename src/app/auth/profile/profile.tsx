@@ -3,9 +3,9 @@
 import { useActionState, useEffect } from "react";
 import { handleProfileUpdate } from "@/src/_actions/profileAction";
 import Image from "next/image";
-import { SessionSchema } from "@/src/_types/signInTypes";
+import { SessionType } from "@/src/_types/signInTypes";
 
-export default function ProfilePage(session: SessionSchema) {
+export default function ProfilePage(session: SessionType) {
 	const [actionData, handleProfileSubmit, isPending] = useActionState(
 		handleProfileUpdate,
 		undefined
@@ -59,7 +59,9 @@ export default function ProfilePage(session: SessionSchema) {
 							name='email'
 							className='w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
 							placeholder='you@example.com'
-							defaultValue={actionData?.email as string || session.user.email || ""}
+							defaultValue={
+								(actionData?.email as string) || session.user.email || ""
+							}
 							disabled
 						/>
 						{actionData?.errors?.email && (
@@ -81,7 +83,9 @@ export default function ProfilePage(session: SessionSchema) {
 							name='username'
 							className='w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
 							placeholder='johndoe'
-							defaultValue={actionData?.username as string || session.user.username || ""}
+							defaultValue={
+								(actionData?.username as string) || session.user.username || ""
+							}
 						/>
 						{actionData?.errors?.username && (
 							<p className='text-sm text-red-400 mt-1' role='alert'>
@@ -104,7 +108,9 @@ export default function ProfilePage(session: SessionSchema) {
 								className='w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
 								placeholder='John'
 								defaultValue={
-									actionData?.firstname as string|| session.user.firstname || ""
+									(actionData?.firstname as string) ||
+									session.user.firstname ||
+									""
 								}
 							/>
 							{actionData?.errors?.firstname && (
@@ -127,7 +133,9 @@ export default function ProfilePage(session: SessionSchema) {
 								className='w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
 								placeholder='Doe'
 								defaultValue={
-									actionData?.lastname as string || session.user.lastname || ""
+									(actionData?.lastname as string) ||
+									session.user.lastname ||
+									""
 								}
 							/>
 							{actionData?.errors?.lastname && (

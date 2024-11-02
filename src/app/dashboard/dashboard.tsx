@@ -1,9 +1,9 @@
 import { SignOutButton } from "@/src/components/auth/signOutButton";
 import Link from "next/link";
 import Image from "next/image";
-import { SessionSchema } from "@/src/_types/signInTypes";
+import { SessionType } from "@/src/_types/signInTypes";
 
-export function DashboardPage(session: SessionSchema) {
+export function DashboardPage(session: SessionType) {
 	const { user } = session;
 
 	return (

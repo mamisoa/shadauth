@@ -4,12 +4,12 @@ import {
 	getSession,
 } from "@/src/_actions/checkAuthAction";
 import ProfilePage from "@/src/app/auth/profile/profile";
-import { SessionSchema } from "@/src/_types/signInTypes";
+import { SessionType } from "@/src/_types/signInTypes";
 import { prisma } from "@/prisma/prisma";
 
 export default async function Profile() {
 	const isAuthenticated = await checkIsAuthenticated();
-	const sessionObj = (await getSession()) as SessionSchema;
+	const sessionObj = (await getSession()) as SessionType;
 
 	if (!isAuthenticated) {
 		redirect("/auth/sign-in");
@@ -24,8 +24,8 @@ export default async function Profile() {
 			},
 		});
 
-		// Create updated session object maintaining the SessionSchema structure
-		const updatedSessionObj: SessionSchema = {
+		// Create updated session object maintaining the SessionType structure
+		const updatedSessionObj: SessionType = {
 			user: {
 				...sessionObj.user,
 				username: userData?.username ?? undefined,
