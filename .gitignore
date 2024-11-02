@@ -38,3 +38,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# PostgreSQL
+postgres_data/
+
+# pgAdmin
+pgadmin_data/
+
+# Ignore all directories inside prisma/migrations
+prisma/migrations/*/
+
+# Allow files in prisma/migrations
+!prisma/migrations/*.*
