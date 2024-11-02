@@ -16,6 +16,7 @@ import { Button } from "@/src/components/ui/button";
 import { Alert, AlertDescription } from "@/src/components/ui/alert";
 import { Loader2 } from "lucide-react";
 import { SessionType } from "@/src/_types/signInTypes";
+
 export default function ProfilePage(session: SessionType) {
 	const [actionData, handleProfileSubmit, isPending] = useActionState(
 		handleProfileUpdate,

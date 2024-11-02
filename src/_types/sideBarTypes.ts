@@ -23,8 +23,14 @@ export interface NavItemType {
 	}[];
 }
 
+// sideBarTypes.ts
 export interface UserType {
-	name?: string;
-	email?: string;
+	id?: string;
+	name: string;
+	email: string;
 	avatar?: string;
+	username?: string;
+	firstname?: string;
+	lastname?: string;
+	image?: string;
 }
