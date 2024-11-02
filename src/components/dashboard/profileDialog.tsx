@@ -21,93 +21,67 @@ interface ProfileDialogProps {
 const ProfileDialog = ({ user, open, onOpenChange }: ProfileDialogProps) => {
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
-			<DialogContent className='sm:max-w-md bg-gray-800 text-white border-gray-700'>
+			<DialogContent className='sm:max-w-md bg-background border-border'>
 				<DialogHeader>
-					<DialogTitle className='text-xl font-bold'>
+					<DialogTitle className='text-xl font-bold text-foreground'>
 						Profile Settings
 					</DialogTitle>
-					<DialogDescription className='text-gray-400'>
+					<DialogDescription className='text-muted-foreground'>
 						Update your account information
 					</DialogDescription>
 				</DialogHeader>
 
 				<form className='space-y-4'>
 					<div className='space-y-2'>
-						<Label htmlFor='email' className='text-gray-300'>
-							Email
-						</Label>
+						<Label htmlFor='email'>Email</Label>
 						<Input
 							id='email'
 							name='email'
 							placeholder='you@example.com'
 							defaultValue={user.email}
-							className='bg-gray-700 border-gray-600 text-white placeholder-gray-400'
 							disabled
 						/>
 					</div>
 
 					<div className='space-y-2'>
-						<Label htmlFor='username' className='text-gray-300'>
-							Username
-						</Label>
+						<Label htmlFor='username'>Username</Label>
 						<Input
 							id='username'
 							name='username'
 							placeholder='johndoe'
 							defaultValue={user.name || ""}
-							className='bg-gray-700 border-gray-600 text-white placeholder-gray-400'
 						/>
 					</div>
 
 					<div className='grid grid-cols-2 gap-4'>
 						<div className='space-y-2'>
-							<Label htmlFor='firstname' className='text-gray-300'>
-								First Name
-							</Label>
-							<Input
-								id='firstname'
-								name='firstname'
-								placeholder='John'
-								className='bg-gray-700 border-gray-600 text-white placeholder-gray-400'
-							/>
+							<Label htmlFor='firstname'>First Name</Label>
+							<Input id='firstname' name='firstname' placeholder='John' />
 						</div>
 
 						<div className='space-y-2'>
-							<Label htmlFor='lastname' className='text-gray-300'>
-								Last Name
-							</Label>
-							<Input
-								id='lastname'
-								name='lastname'
-								placeholder='Doe'
-								className='bg-gray-700 border-gray-600 text-white placeholder-gray-400'
-							/>
+							<Label htmlFor='lastname'>Last Name</Label>
+							<Input id='lastname' name='lastname' placeholder='Doe' />
 						</div>
 					</div>
 
 					<div className='space-y-2'>
-						<Label htmlFor='currentPassword' className='text-gray-300'>
-							Current Password
-						</Label>
+						<Label htmlFor='currentPassword'>Current Password</Label>
 						<Input
 							type='password'
 							id='currentPassword'
 							name='currentPassword'
 							placeholder='••••••••'
-							className='bg-gray-700 border-gray-600 text-white placeholder-gray-400'
 						/>
 					</div>
 
 					<div className='space-y-2'>
-						<Label htmlFor='newPassword' className='text-gray-300'>
-							New Password (optional)
-						</Label>
+						<Label htmlFor='newPassword'>New Password (optional)</Label>
 						<Input
 							type='password'
 							id='newPassword'
 							name='newPassword'
 							placeholder='••••••••'
-							className='bg-gray-700 border-gray-600 text-white placeholder-gray-400'
 						/>
 					</div>
 				</form>
@@ -115,16 +89,11 @@ const ProfileDialog = ({ user, open, onOpenChange }: ProfileDialogProps) => {
 				<DialogFooter className='sm:justify-between'>
 					<Button
 						type='button'
-						variant='secondary'
-						onClick={() => onOpenChange(false)}
-						className='bg-gray-600 hover:bg-gray-500 text-white'>
+						variant='outline'
+						onClick={() => onOpenChange(false)}>
 						Cancel
 					</Button>
-					<Button
-						type='submit'
-						className='bg-blue-600 hover:bg-blue-700 text-white'>
-						Update Profile
-					</Button>
+					<Button type='submit'>Update Profile</Button>
 				</DialogFooter>
 			</DialogContent>
 		</Dialog>
