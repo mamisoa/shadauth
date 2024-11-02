@@ -30,6 +30,7 @@ import {
 	PieChart,
 	SquareTerminal,
 } from "lucide-react";
+import { IconName } from "@/src/_types/iconTypes";
 
 export function DashboardPage(session: SessionType) {
 	const { user } = session;
@@ -166,17 +167,17 @@ export function DashboardPageCN(session: SessionType) {
 		teams: [
 			{
 				name: "Acme Inc",
-				logo: GalleryVerticalEnd,
+				logo: "GalleryVerticalEnd" as IconName,
 				plan: "Enterprise",
 			},
 			{
 				name: "Acme Corp.",
-				logo: AudioWaveform,
+				logo: "AudioWaveform" as IconName,
 				plan: "Startup",
 			},
 			{
 				name: "Evil Corp.",
-				logo: Command,
+				logo: "Command" as IconName,
 				plan: "Free",
 			},
 		],
@@ -184,7 +185,7 @@ export function DashboardPageCN(session: SessionType) {
 			{
 				title: "Playground",
 				url: "#",
-				icon: SquareTerminal,
+				icon: "SquareTerminal" as IconName,
 				isActive: true,
 				items: [
 					{
@@ -204,7 +205,7 @@ export function DashboardPageCN(session: SessionType) {
 			{
 				title: "Models",
 				url: "#",
-				icon: Bot,
+				icon: "Bot" as IconName,
 				items: [
 					{
 						title: "Genesis",
@@ -223,7 +224,7 @@ export function DashboardPageCN(session: SessionType) {
 			{
 				title: "Documentation",
 				url: "#",
-				icon: BookOpen,
+				icon: "BookOpen" as IconName,
 				items: [
 					{
 						title: "Introduction",
@@ -248,17 +249,17 @@ export function DashboardPageCN(session: SessionType) {
 			{
 				name: "Design Engineering",
 				url: "#",
-				icon: Frame,
+				icon: "Frame" as IconName,
 			},
 			{
 				name: "Sales & Marketing",
 				url: "#",
-				icon: PieChart,
+				icon: "PieChart" as IconName,
 			},
 			{
 				name: "Travel",
 				url: "#",
-				icon: Map,
+				icon: "Map" as IconName,
 			},
 		],
 	};

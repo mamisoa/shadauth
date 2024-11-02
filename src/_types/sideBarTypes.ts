@@ -1,30 +1,24 @@
-import { type LucideIcon } from "lucide-react";
+import { IconName } from "@/src/_types/iconTypes";
 
 export interface TeamsType {
 	name: string;
-	logo: React.ElementType;
+	logo: IconName; // Now using IconName type
 	plan: string;
 }
 
 export interface NavProjectsType {
 	name: string;
 	url: string;
-	icon: LucideIcon;
+	icon: IconName; // Now using IconName type
 }
 
 export interface NavItemType {
 	title: string;
 	url: string;
-	icon?: LucideIcon;
+	icon?: IconName; // Now using IconName type
 	isActive?: boolean;
 	items?: {
 		title: string;
 		url: string;
 	}[];
-}
-
-export interface UserType {
-	name: string;
-	email: string;
-	avatar: string;
 }

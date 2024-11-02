@@ -24,6 +24,7 @@ import {
 } from "@/src/components/ui/sidebar";
 
 import { NavProjectsType } from "../_types/sideBarTypes";
+import { IconMapper } from "@/src/components/sidebar/IconMapper";
 
 /**
  * @function NavProjects
@@ -51,7 +52,7 @@ export function NavProjects({
 					<SidebarMenuItem key={item.name}>
 						<SidebarMenuButton asChild>
 							<a href={item.url}>
-								<item.icon />
+								<IconMapper name={item.icon} />
 								<span>{item.name}</span>
 							</a>
 						</SidebarMenuButton>
