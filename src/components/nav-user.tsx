@@ -44,6 +44,7 @@ import {
 	SidebarMenuItem,
 	useSidebar,
 } from "@/src/components/ui/sidebar";
+import { HandleSignOut } from "../_actions/signOutAction";
 
 export function NavUser({
 	user,
@@ -115,7 +116,7 @@ export function NavUser({
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem>
+						<DropdownMenuItem onClick={HandleSignOut}>
 							<LogOut />
 							Log out
 						</DropdownMenuItem>

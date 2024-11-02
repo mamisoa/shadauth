@@ -1,6 +1,3 @@
-import { SignOutButton } from "@/src/components/auth/signOutButton";
-import Link from "next/link";
-import Image from "next/image";
 import { SessionType } from "@/src/_types/signInTypes";
 
 import { AppSidebar } from "@/src/components/app-sidebar";
