@@ -19,6 +19,7 @@ import {
 } from "@/src/components/ui/sidebar";
 
 import { NavItemType } from "../_types/sideBarTypes";
+import { IconMapper } from "@/src/components/sidebar/IconMapper";
 
 /**
  * NavMain component renders a sidebar navigation menu with collapsible items.
@@ -49,7 +50,7 @@ export function NavMain({ items }: { items: NavItemType[] }): JSX.Element {
 						<SidebarMenuItem>
 							<CollapsibleTrigger asChild>
 								<SidebarMenuButton tooltip={item.title}>
-									{item.icon && <item.icon />}
+									{item.icon && <IconMapper name={item.icon} />}
 									<span>{item.title}</span>
 									<ChevronRight className='ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90' />
 								</SidebarMenuButton>
