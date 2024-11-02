@@ -8,102 +8,105 @@ import bcrypt from "bcrypt";
 import { ProfileUpdateSchema } from "../_schemas/profileSchema";
 
 interface ProfileActionReturn {
-    errors?: StringMap;
-    [key: string]: StringMap | string | undefined;
+	errors?: StringMap;
+	[key: string]: StringMap | string | undefined;
 }
 
 export async function handleProfileUpdate(
-    prevState = {},
-    formData: FormData
+	_: unknown,
+	formData: FormData
 ): Promise<ProfileActionReturn> {
-    const session = await auth();
-    
-    // Check if user is authenticated
-    if (!session?.user?.id) {
-        return {
-            errors: {
-                general: "You must be logged in to update your profile"
-            }
-        };
-    }
+	const session = await auth();
 
-    const unvalidatedInputs = Object.fromEntries(formData);
-    const validated = ProfileUpdateSchema.safeParse(unvalidatedInputs);
+	// Check if user is authenticated
+	if (!session?.user?.id) {
+		return {
+			errors: {
+				general: "You must be logged in to update your profile",
+			},
+		};
+	}
 
-    if (!validated.success) {
-        const errors = convertZodErrors(validated.error);
-        return { errors, ...unvalidatedInputs };
-    }
+	const unvalidatedInputs = Object.fromEntries(formData);
+	const validated = ProfileUpdateSchema.safeParse(unvalidatedInputs);
 
-    try {
-        // Get current user data
-        const currentUser = await prisma.user.findUnique({
-            where: { id: session.user.id },
-            select: {
-                id: true,
-                password: true,
-            },
-        });
+	if (!validated.success) {
+		const errors = convertZodErrors(validated.error);
+		return { errors, ...unvalidatedInputs };
+	}
 
-        if (!currentUser) {
-            return {
-                errors: {
-                    general: "User not found"
-                }
-            };
-        }
+	try {
+		// Get current user data
+		const currentUser = await prisma.user.findUnique({
+			where: { id: session.user.id },
+			select: {
+				id: true,
+				password: true,
+			},
+		});
 
-        // Verify current password if provided
-        if (validated.data.currentPassword) {
-            
-            // doesn't check if password is empty because it's optional
+		console.log("🚀 ~ currentUser:", currentUser);
 
-            const isValidPassword = bcrypt.compare(
-                validated.data.currentPassword,
-                currentUser.password as string
-            );
+		if (!currentUser) {
+			return {
+				errors: {
+					general: "User not found",
+				},
+			};
+		}
 
-            if (!isValidPassword) {
-                return {
-                    errors: {
-                        currentPassword: "Current password is incorrect"
-                    }
-                };
-            }
-        };
+		// Verify current password if provided
+		if (validated.data.currentPassword) {
+			// doesn't check if password is empty because it's optional
 
-        // Prepare update data
-        const updateData: StringMap = {
-            username: validated.data.username as string,
-            firstname: validated.data.firstname as string,
-            lastname: validated.data.lastname as string,
-        };
+			const isValidPassword = await bcrypt.compare(
+				validated.data.currentPassword,
+				currentUser.password as string
+			);
 
-        // Hash new password if provided
-        if (validated.data.newPassword !== "") {
-            updateData.password = await bcrypt.hash(validated.data.newPassword as string, 12);
-        }
+			if (!isValidPassword) {
+				return {
+					errors: {
+						currentPassword: "Current password is incorrect",
+					},
+				};
+			}
+		}
 
-        // console.log("🚀 ~ updateData:", updateData);        
+		// Prepare update data
+		const updateData: StringMap = {
+			username: validated.data.username as string,
+			firstname: validated.data.firstname as string,
+			lastname: validated.data.lastname as string,
+		};
 
-        // Update user profile
-        await prisma.user.update({
-            where: { id: session.user.id },
-            data: updateData,
-        });
+		// Hash new password if provided
+		if (validated.data.newPassword !== "") {
+			updateData.password = await bcrypt.hash(
+				validated.data.newPassword as string,
+				12
+			);
+		}
 
-        return {
-            ...updateData,
-            successMsg: "Profile updated successfully"
-        };
+		// console.log("🚀 ~ updateData:", updateData);
 
-    } catch (error) {
-        console.error("Profile update error:", error);
-        return {
-            errors: {
-                general: "Failed to update profile",
-                log: error as string
-            }
-        };
-    }
+		// Update user profile
+		await prisma.user.update({
+			where: { id: session.user.id },
+			data: updateData,
+		});
+
+		return {
+			...updateData,
+			successMsg: "Profile updated successfully",
+		};
+	} catch (error) {
+		console.error("Profile update error:", error);
+		return {
+			errors: {
+				general: "Failed to update profile",
+				log: error as string,
+			},
+		};
+	}
 }

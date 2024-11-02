@@ -72,7 +72,6 @@ export default function ProfilePage(session: SessionType) {
 								defaultValue={
 									(actionData?.email as string) || session.user.email || ""
 								}
-								disabled
 								className='bg-gray-700 border-gray-600 text-white placeholder-gray-400'
 							/>
 							{actionData?.errors?.email && (
