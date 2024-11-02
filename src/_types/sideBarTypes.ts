@@ -22,3 +22,9 @@ export interface NavItemType {
 		url: string;
 	}[];
 }
+
+export interface UserType {
+	name?: string;
+	email?: string;
+	avatar?: string;
+}
