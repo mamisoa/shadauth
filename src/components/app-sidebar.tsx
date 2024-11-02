@@ -28,6 +28,13 @@
 
 "use client";
 
+import {
+	TeamsType,
+	NavProjectsType,
+	NavItemType,
+	UserType,
+} from "@/src/_types/sideBarTypes";
+
 import * as React from "react";
 import {
 	AudioWaveform,
@@ -54,13 +61,23 @@ import {
 	SidebarRail,
 } from "@/src/components/ui/sidebar";
 
+interface SidebarData {
+	user: UserType;
+	teams: TeamsType[];
+	navMain: NavItemType[];
+	projects: NavProjectsType[];
+}
+
+interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
+	data: SidebarData;
+}
 // This is sample data.
-const user = {
-	name: "shadcn",
-	email: "m@example.com",
-	avatar: "/avatars/shadcn.jpg",
-};
 const data = {
+	user: {
+		name: "shadcn",
+		email: "m@example.com",
+		avatar: "/avatars/shadcn.jpg",
+	},
 	teams: [
 		{
 			name: "Acme Inc",
@@ -184,7 +201,7 @@ const data = {
 	],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ data, ...props }: AppSidebarProps) {
 	return (
 		<Sidebar collapsible='icon' {...props}>
 			<SidebarHeader>
@@ -195,7 +212,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 				<NavProjects projects={data.projects} />
 			</SidebarContent>
 			<SidebarFooter>
-				<NavUser user={user} />
+				<NavUser user={data.user} />
 			</SidebarFooter>
 			<SidebarRail />
 		</Sidebar>

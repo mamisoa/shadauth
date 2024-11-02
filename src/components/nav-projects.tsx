@@ -4,13 +4,7 @@
  * It includes a list of projects, each with a name, URL, and icon, and provides a dropdown menu for additional actions.
  */
 
-import {
-	Folder,
-	Forward,
-	MoreHorizontal,
-	Trash2,
-	type LucideIcon,
-} from "lucide-react";
+import { Folder, Forward, MoreHorizontal, Trash2 } from "lucide-react";
 
 import {
 	DropdownMenu,
@@ -29,6 +23,8 @@ import {
 	useSidebar,
 } from "@/src/components/ui/sidebar";
 
+import { NavProjectsType } from "../_types/sideBarTypes";
+
 /**
  * @function NavProjects
  * @description Renders a sidebar group for navigating projects.
@@ -39,14 +35,11 @@ import {
  * @param {LucideIcon} props.projects.icon - The icon representing the project.
  * @returns {JSX.Element} The rendered sidebar group component.
  */
+
 export function NavProjects({
 	projects,
 }: {
-	projects: {
-		name: string;
-		url: string;
-		icon: LucideIcon;
-	}[];
+	projects: NavProjectsType[];
 }): JSX.Element {
 	const { isMobile } = useSidebar();
 

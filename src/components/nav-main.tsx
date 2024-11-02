@@ -18,6 +18,8 @@ import {
 	SidebarMenuSubItem,
 } from "@/src/components/ui/sidebar";
 
+import { NavItemType } from "../_types/sideBarTypes";
+
 /**
  * NavMain component renders a sidebar navigation menu with collapsible items.
  *
@@ -33,20 +35,7 @@ import {
  *
  * @returns {JSX.Element} The rendered sidebar navigation menu.
  */
-export function NavMain({
-	items,
-}: {
-	items: {
-		title: string;
-		url: string;
-		icon?: LucideIcon;
-		isActive?: boolean;
-		items?: {
-			title: string;
-			url: string;
-		}[];
-	}[];
-}): JSX.Element {
+export function NavMain({ items }: { items: NavItemType[] }): JSX.Element {
 	return (
 		<SidebarGroup>
 			<SidebarGroupLabel>Platform</SidebarGroupLabel>
