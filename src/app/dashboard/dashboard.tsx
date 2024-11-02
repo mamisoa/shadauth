@@ -19,6 +19,18 @@ import {
 	SidebarTrigger,
 } from "@/src/components/ui/sidebar";
 
+import {
+	AudioWaveform,
+	BookOpen,
+	Bot,
+	Command,
+	Frame,
+	GalleryVerticalEnd,
+	Map,
+	PieChart,
+	SquareTerminal,
+} from "lucide-react";
+
 export function DashboardPage(session: SessionType) {
 	const { user } = session;
 
@@ -145,10 +157,115 @@ export function DashboardPage(session: SessionType) {
 
 export function DashboardPageCN(session: SessionType) {
 	const { user } = session;
+	const sidebarData = {
+		user: {
+			name: user.name || "User",
+			email: user.email || "Email",
+			avatar: user.image || "",
+		},
+		teams: [
+			{
+				name: "Acme Inc",
+				logo: GalleryVerticalEnd,
+				plan: "Enterprise",
+			},
+			{
+				name: "Acme Corp.",
+				logo: AudioWaveform,
+				plan: "Startup",
+			},
+			{
+				name: "Evil Corp.",
+				logo: Command,
+				plan: "Free",
+			},
+		],
+		navMain: [
+			{
+				title: "Playground",
+				url: "#",
+				icon: SquareTerminal,
+				isActive: true,
+				items: [
+					{
+						title: "History",
+						url: "#",
+					},
+					{
+						title: "Starred",
+						url: "#",
+					},
+					{
+						title: "Settings",
+						url: "#",
+					},
+				],
+			},
+			{
+				title: "Models",
+				url: "#",
+				icon: Bot,
+				items: [
+					{
+						title: "Genesis",
+						url: "#",
+					},
+					{
+						title: "Explorer",
+						url: "#",
+					},
+					{
+						title: "Quantum",
+						url: "#",
+					},
+				],
+			},
+			{
+				title: "Documentation",
+				url: "#",
+				icon: BookOpen,
+				items: [
+					{
+						title: "Introduction",
+						url: "#",
+					},
+					{
+						title: "Get Started",
+						url: "#",
+					},
+					{
+						title: "Tutorials",
+						url: "#",
+					},
+					{
+						title: "Changelog",
+						url: "#",
+					},
+				],
+			},
+		],
+		projects: [
+			{
+				name: "Design Engineering",
+				url: "#",
+				icon: Frame,
+			},
+			{
+				name: "Sales & Marketing",
+				url: "#",
+				icon: PieChart,
+			},
+			{
+				name: "Travel",
+				url: "#",
+				icon: Map,
+			},
+		],
+	};
 
 	return (
 		<SidebarProvider>
-			<AppSidebar />
+			<AppSidebar data={sidebarData} />
 			<SidebarInset>
 				<header className='flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12'>
 					<div className='flex items-center gap-2 px-4'>

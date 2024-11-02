@@ -1,3 +1,4 @@
+"use client";
 /**
  * `NavUser` component renders a user navigation menu within a sidebar.
  * It displays the user's avatar, name, and email, and provides a dropdown menu

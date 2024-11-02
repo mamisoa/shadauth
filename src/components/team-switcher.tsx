@@ -1,3 +1,4 @@
+"use client";
 /**
  * TeamSwitcher component allows users to switch between different teams.
  * It displays a dropdown menu with a list of teams and an option to add a new team.

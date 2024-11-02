@@ -1,9 +1,9 @@
+"use client";
 /**
  * @file nav-projects.tsx
  * @description This file contains the `NavProjects` component, which renders a sidebar group for navigating projects.
  * It includes a list of projects, each with a name, URL, and icon, and provides a dropdown menu for additional actions.
  */
-
 import { Folder, Forward, MoreHorizontal, Trash2 } from "lucide-react";
 
 import {
