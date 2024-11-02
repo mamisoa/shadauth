@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { DashboardPage } from "@/src/app/dashboard/dashboard";
+import { DashboardPageCN } from "@/src/app/dashboard/dashboard";
 import {
 	checkIsAuthenticated,
 	getSession,
@@ -12,6 +12,6 @@ export default async function Dashboard() {
 	if (!isAuthenticated) {
 		redirect("/auth/sign-in");
 	} else {
-		return <DashboardPage {...sessionObj} />;
+		return <DashboardPageCN {...sessionObj} />;
 	}
 }
