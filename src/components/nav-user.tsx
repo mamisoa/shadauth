@@ -45,16 +45,9 @@ import {
 	useSidebar,
 } from "@/src/components/ui/sidebar";
 import { HandleSignOut } from "../_actions/signOutAction";
+import { UserType } from "../_types/sideBarTypes";
 
-export function NavUser({
-	user,
-}: {
-	user: {
-		name: string;
-		email: string;
-		avatar: string;
-	};
-}) {
+export function NavUser({ user }: { user: UserType }) {
 	const { isMobile } = useSidebar();
 
 	return (

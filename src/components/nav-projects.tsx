@@ -23,7 +23,7 @@ import {
 	useSidebar,
 } from "@/src/components/ui/sidebar";
 
-import { NavProjectsType } from "../_types/sideBarTypes";
+import { NavProjectsType } from "@/src/_types/sideBarTypes";
 import { IconMapper } from "@/src/components/sidebar/IconMapper";
 
 /**
