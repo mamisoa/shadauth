@@ -54,118 +54,147 @@ export default function SignInPage() {
 						Choose your preferred sign in method
 					</CardDescription>
 				</CardHeader>
-				<CardContent className='space-y-6'>
-					{/* Standard Sign In Form */}
-					<form action={handleCredentialSignInSubmit} className='space-y-4'>
-						<div className='space-y-2'>
-							<Label htmlFor='email'>Email</Label>
-							<Input
-								type='email'
-								id='email'
-								name='email'
-								placeholder='you@example.com'
-								defaultValue={credentialActionData?.email as string}
-							/>
-							{credentialActionData?.errors?.email && (
-								<p className='text-sm text-destructive' role='alert'>
-									{credentialActionData.errors.email}
-								</p>
-							)}
+				<CardContent>
+					<div className='space-y-6'>
+						<div className='border rounded-lg p-4'>
+							{/* Standard Sign In Form */}
+							<form action={handleCredentialSignInSubmit} className='space-y-4'>
+								<div className='space-y-2'>
+									<Label htmlFor='email'>Email</Label>
+									<Input
+										type='email'
+										id='email'
+										name='email'
+										placeholder='you@example.com'
+										defaultValue={credentialActionData?.email as string}
+									/>
+									{credentialActionData?.errors?.email && (
+										<p className='text-sm text-destructive' role='alert'>
+											{credentialActionData.errors.email}
+										</p>
+									)}
+								</div>
+								<div className='space-y-2'>
+									<Label htmlFor='password'>Password</Label>
+									<Input
+										type='password'
+										id='password'
+										name='password'
+										placeholder='••••••••'
+									/>
+									{credentialActionData?.errors?.password && (
+										<p className='text-sm text-destructive' role='alert'>
+											{credentialActionData.errors.password}
+										</p>
+									)}
+								</div>
+								{credentialActionData?.errors?.general && (
+									<p className='text-sm text-destructive' role='alert'>
+										{credentialActionData.errors.general}
+									</p>
+								)}
+								{credentialActionData?.successMsg && (
+									<div
+										className='p-4 mb-4 text-sm text-green-400 bg-green-900 rounded-lg'
+										role='alert'>
+										<span className='font-medium'>Success!</span>{" "}
+										{credentialActionData.successMsg as string}
+									</div>
+								)}
+								<Button
+									type='submit'
+									className='w-full'
+									disabled={isCredentialPending}>
+									{isCredentialPending ? (
+										<>
+											<Loader2 className='mr-2 h-4 w-4 animate-spin' />
+											Signing in...
+										</>
+									) : (
+										"Sign In"
+									)}
+								</Button>
+							</form>
 						</div>
-						<div className='space-y-2'>
-							<Label htmlFor='password'>Password</Label>
-							<Input
-								type='password'
-								id='password'
-								name='password'
-								placeholder='••••••••'
-							/>
-							{credentialActionData?.errors?.password && (
-								<p className='text-sm text-destructive' role='alert'>
-									{credentialActionData.errors.password}
-								</p>
-							)}
-						</div>
-						{credentialActionData?.errors?.general && (
-							<p className='text-sm text-destructive' role='alert'>
-								{credentialActionData.errors.general}
-							</p>
-						)}
-						{credentialActionData?.successMsg && (
-							<div
-								className='p-4 mb-4 text-sm text-green-400 bg-green-900 rounded-lg'
-								role='alert'>
-								<span className='font-medium'>Success!</span>{" "}
-								{credentialActionData.successMsg as string}
+
+						<div className='relative my-6'>
+							<div className='absolute inset-0 flex items-center'>
+								<Separator className='w-full' />
 							</div>
-						)}
-						<Button
-							type='submit'
-							className='w-full'
-							disabled={isCredentialPending}>
-							{isCredentialPending ? (
-								<>
-									<Loader2 className='mr-2 h-4 w-4 animate-spin' />
-									Signing in...
-								</>
-							) : (
-								"Sign In"
-							)}
-						</Button>
-					</form>
-
-					<Separator />
-
-					{/* Email Link Sign In Form */}
-					<form action={handleEmailSignInSubmit} className='space-y-4'>
-						<div className='space-y-2'>
-							<Label htmlFor='email-link'>Email</Label>
-							<Input
-								type='email'
-								id='email-link'
-								name='email'
-								placeholder='you@example.com'
-								defaultValue={emailActionData?.email as string}
-							/>
-						</div>
-						{emailActionData?.errors && (
-							<p className='text-sm text-destructive' role='alert'>
-								{emailActionData.errors.email}
-							</p>
-						)}
-						{emailActionData?.errors?.general && (
-							<p className='text-sm text-destructive' role='alert'>
-								{emailActionData.errors.general}
-							</p>
-						)}
-						{emailActionData?.successMsg && (
-							<div
-								className='p-4 mb-4 text-sm text-green-400 bg-green-900 rounded-lg'
-								role='alert'>
-								<span className='font-medium'>Success!</span>{" "}
-								{emailActionData?.successMsg as string}
-								<br />
-								Check your inbox.
+							<div className='relative flex justify-center text-xs uppercase'>
+								<span className='bg-background px-2 text-muted-foreground'>
+									Or
+								</span>
 							</div>
-						)}
-						<Button type='submit' className='w-full' disabled={isEmailPending}>
-							{isEmailPending ? (
-								<>
-									<Loader2 className='mr-2 h-4 w-4 animate-spin' />
-									Sending email link...
-								</>
-							) : (
-								<>
-									Sign in with magic link
-									<ArrowRight className='ml-2 h-4 w-4' />
-								</>
-							)}
-						</Button>
-					</form>
+						</div>
 
-					<Separator />
+						<div className='border rounded-lg p-4'>
+							{/* Email Link Sign In Form */}
+							<form action={handleEmailSignInSubmit} className='space-y-4'>
+								<div className='space-y-2'>
+									<Label htmlFor='email-link'>Email</Label>
+									<Input
+										type='email'
+										id='email-link'
+										name='email'
+										placeholder='you@example.com'
+										defaultValue={emailActionData?.email as string}
+									/>
+								</div>
+								{emailActionData?.errors && (
+									<p className='text-sm text-destructive' role='alert'>
+										{emailActionData.errors.email}
+									</p>
+								)}
+								{emailActionData?.errors?.general && (
+									<p className='text-sm text-destructive' role='alert'>
+										{emailActionData.errors.general}
+									</p>
+								)}
+								{emailActionData?.successMsg && (
+									<div
+										className='p-4 mb-4 text-sm text-green-400 bg-green-900 rounded-lg'
+										role='alert'>
+										<span className='font-medium'>Success!</span>{" "}
+										{emailActionData?.successMsg as string}
+										<br />
+										Check your inbox.
+									</div>
+								)}
+								<Button
+									type='submit'
+									className='w-full'
+									disabled={isEmailPending}>
+									{isEmailPending ? (
+										<>
+											<Loader2 className='mr-2 h-4 w-4 animate-spin' />
+											Sending email link...
+										</>
+									) : (
+										<>
+											Sign in with magic link
+											<ArrowRight className='ml-2 h-4 w-4' />
+										</>
+									)}
+								</Button>
+							</form>
+						</div>
 
-					<SignInGoogleButton />
+						<div className='relative my-6'>
+							<div className='absolute inset-0 flex items-center'>
+								<Separator className='w-full' />
+							</div>
+							<div className='relative flex justify-center text-xs uppercase'>
+								<span className='bg-background px-2 text-muted-foreground'>
+									Or
+								</span>
+							</div>
+						</div>
+
+						<div>
+							<SignInGoogleButton />
+						</div>
+					</div>
 				</CardContent>
 			</Card>
 		</div>
