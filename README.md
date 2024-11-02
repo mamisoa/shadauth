@@ -22,16 +22,16 @@ Add google domain for user avatar.
 
 ```javascript
 const nextConfig: NextConfig = {
-	images: {
-		remotePatterns: [
-			{
-				protocol: "https",
-				hostname: "*.googleusercontent.com",
-				port: "",
-				pathname: "/**",
-				search: "",
-			},
-		],
-	},
+ images: {
+  remotePatterns: [
+   {
+    protocol: "https",
+    hostname: "*.googleusercontent.com",
+    port: "",
+    pathname: "/**",
+    search: "",
+   },
+  ],
+ },
 };
 ```
