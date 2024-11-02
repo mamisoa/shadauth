@@ -103,7 +103,7 @@ export default function SignInPage() {
 								)}
 								<Button
 									type='submit'
-									className='w-full'
+									className='w-full text-md'
 									disabled={isCredentialPending}>
 									{isCredentialPending ? (
 										<>
@@ -128,7 +128,7 @@ export default function SignInPage() {
 							</div>
 						</div>
 
-						<div className='border rounded-lg p-4'>
+						<div className='border rounded-lg p-3'>
 							{/* Email Link Sign In Form */}
 							<form action={handleEmailSignInSubmit} className='space-y-4'>
 								<div className='space-y-2'>
@@ -163,7 +163,7 @@ export default function SignInPage() {
 								)}
 								<Button
 									type='submit'
-									className='w-full'
+									className='w-full bg-blue-500 text-md'
 									disabled={isEmailPending}>
 									{isEmailPending ? (
 										<>
@@ -191,8 +191,8 @@ export default function SignInPage() {
 							</div>
 						</div>
 
-						<div>
-							<SignInGoogleButton />
+						<div className='px-2'>
+							<SignInGoogleButton className='text-md' />
 						</div>
 					</div>
 				</CardContent>
