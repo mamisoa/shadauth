@@ -19,7 +19,7 @@ import {
 } from "@/src/components/ui/sidebar";
 
 import { NavItemType } from "../_types/sideBarTypes";
-import { IconMapper } from "@/src/components/sidebar/IconMapper";
+import { IconMapper } from "@/src/components/dashboard/sidebar/IconMapper";
 
 /**
  * NavMain component renders a sidebar navigation menu with collapsible items.

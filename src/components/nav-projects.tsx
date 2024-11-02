@@ -24,7 +24,7 @@ import {
 } from "@/src/components/ui/sidebar";
 
 import { NavProjectsType } from "@/src/_types/sideBarTypes";
-import { IconMapper } from "@/src/components/sidebar/IconMapper";
+import { IconMapper } from "@/src/components/dashboard/sidebar/IconMapper";
 
 /**
  * @function NavProjects

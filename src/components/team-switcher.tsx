@@ -33,7 +33,7 @@ import {
 } from "@/src/components/ui/sidebar";
 
 import { TeamsType } from "../_types/sideBarTypes";
-import { IconMapper } from "@/src/components/sidebar/IconMapper";
+import { IconMapper } from "@/src/components/dashboard/sidebar/IconMapper";
 
 export function TeamSwitcher({ teams }: { teams: TeamsType[] }) {
 	const { isMobile } = useSidebar();
