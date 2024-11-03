@@ -21,6 +21,9 @@ import {
 	AvatarImage,
 	AvatarFallback,
 } from "@/src/components/ui/avatar";
+import { on } from "events";
+import { set } from "zod";
+import { wait } from "@/src/_utils/time";
 
 interface ProfileDialogProps {
 	user: UserType; // Now using the updated UserType that includes id
@@ -39,7 +42,6 @@ const ProfileDialog = ({
 		handleProfileUpdate,
 		undefined
 	);
-	const [closingDialog, setClosingDialog] = useState(false);
 
 	useEffect(() => {
 		// console.log("🚀 ~ actionData:", actionData);
@@ -53,19 +55,9 @@ const ProfileDialog = ({
 				firstname: actionData.firstname as string,
 				lastname: actionData.lastname as string,
 			});
-
 			setTimeout(() => onOpenChange(false), 2000);
-			// Clear the success message when the dialog closes
-			setClosingDialog(true);
-			setTimeout(() => {
-				setClosingDialog(false);
-				actionData.successMsg = undefined;
-			}, 2000);
 		}
 	}, [actionData, onOpenChange, onProfileUpdate]);
-	// TODO: user parameter from db are not loaded
-	// TODO: successdiv is not clear when dialog is closed
-	// TODO: username should not change the name navuser
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>

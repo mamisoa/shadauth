@@ -6,6 +6,7 @@ import { convertZodErrors } from "@/src/_utils/errors";
 import { StringMap } from "@/src/_types/signInTypes";
 import bcrypt from "bcrypt";
 import { ProfileUpdateSchema } from "../_schemas/profileSchema";
+import { wait } from "../_utils/time";
 
 interface ProfileActionReturn {
 	errors?: StringMap;
@@ -95,6 +96,8 @@ export async function handleProfileUpdate(
 			where: { id: session.user.id },
 			data: updateData,
 		});
+
+		await wait(1000);
 
 		return {
 			...updateData,
