@@ -55,7 +55,6 @@ const ProfileDialog = ({
 				firstname: actionData.firstname as string,
 				lastname: actionData.lastname as string,
 			});
-			setTimeout(() => onOpenChange(false), 2000);
 		}
 	}, [actionData, onOpenChange, onProfileUpdate]);
 
