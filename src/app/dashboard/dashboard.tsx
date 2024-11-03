@@ -43,65 +43,60 @@ export function DashboardPageCN(session: SessionType) {
 				plan: "Free",
 			},
 		],
+		// Inside your dashboard.tsx where navMain is defined
 		navMain: [
 			{
-				title: "Playground",
+				title: "Projects",
 				url: "#",
-				icon: "SquareTerminal" as IconName,
-				isActive: true,
+				icon: "FolderKanban",
 				items: [
 					{
-						title: "History",
-						url: "#",
-					},
-					{
-						title: "Starred",
-						url: "#",
-					},
-					{
-						title: "Settings",
+						title: "Overview",
 						url: "#",
 					},
 				],
 			},
 			{
-				title: "Models",
+				title: "Personas",
 				url: "#",
-				icon: "Bot" as IconName,
+				icon: "Users",
 				items: [
 					{
-						title: "Genesis",
+						title: "Descriptions",
 						url: "#",
 					},
 					{
-						title: "Explorer",
-						url: "#",
-					},
-					{
-						title: "Quantum",
+						title: "Generation",
 						url: "#",
 					},
 				],
 			},
 			{
-				title: "Documentation",
+				title: "Interviews",
 				url: "#",
-				icon: "BookOpen" as IconName,
+				icon: "MessagesSquare",
 				items: [
 					{
-						title: "Introduction",
+						title: "Test cards",
 						url: "#",
 					},
 					{
-						title: "Get Started",
+						title: "Generation",
+						url: "#",
+					},
+				],
+			},
+			{
+				title: "Reporting",
+				url: "#",
+				icon: "LineChart",
+				items: [
+					{
+						title: "Quantify",
 						url: "#",
 					},
 					{
-						title: "Tutorials",
-						url: "#",
-					},
-					{
-						title: "Changelog",
+						title: "Qualify",
 						url: "#",
 					},
 				],

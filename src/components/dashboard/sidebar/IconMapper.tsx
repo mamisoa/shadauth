@@ -1,28 +1,13 @@
 "use client";
 
 import { IconName } from "@/src/_types/iconTypes";
-import {
-	AudioWaveform,
-	BookOpen,
-	Bot,
-	Command,
-	Frame,
-	GalleryVerticalEnd,
-	Map,
-	PieChart,
-	SquareTerminal,
-} from "lucide-react";
+import { FolderKanban, Users, MessagesSquare, LineChart } from "lucide-react";
 
 const iconComponents = {
-	AudioWaveform: AudioWaveform,
-	BookOpen: BookOpen,
-	Bot: Bot,
-	Command: Command,
-	Frame: Frame,
-	GalleryVerticalEnd: GalleryVerticalEnd,
-	Map: Map,
-	PieChart: PieChart,
-	SquareTerminal: SquareTerminal,
+	FolderKanban: FolderKanban,
+	Users: Users,
+	MessagesSquare: MessagesSquare,
+	LineChart: LineChart,
 } as const;
 
 interface IconMapperProps {
