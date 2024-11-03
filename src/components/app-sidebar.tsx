@@ -46,6 +46,7 @@ import {
 	SidebarHeader,
 	SidebarRail,
 } from "@/src/components/ui/sidebar";
+import { prisma } from "@/prisma/prisma";
 
 interface SidebarData {
 	user: UserType;
@@ -58,7 +59,42 @@ interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
 	data: SidebarData;
 }
 
-export function AppSidebar({ data, ...props }: AppSidebarProps) {
+export async function AppSidebar({ data, ...props }: AppSidebarProps) {
+	// console.log("🚀 ~ userData:", data);
+	// Fetch the latest user data from the database
+	const userData = await prisma.user.findUnique({
+		where: { email: data.user.email },
+		select: {
+			id: true,
+			username: true,
+			firstname: true,
+			lastname: true,
+			email: true,
+			image: true,
+			name: true,
+		},
+	});
+	// console.log("🚀 ~ userData:", userData);
+
+	if (!userData) {
+		console.error("User not found in database");
+		return null;
+	}
+
+	// Merge the fetched data with the existing user data
+	const enrichedUser: UserType = {
+		...data.user,
+		id: userData.id,
+		username: userData.username ?? data.user.username,
+		firstname: userData.firstname ?? data.user.firstname,
+		lastname: userData.lastname ?? data.user.lastname,
+		name: userData.name ?? data.user.name,
+		email: userData.email ?? data.user.email,
+		avatar: userData.image ?? data.user.avatar,
+	};
+
+	// console.log("🚀 ~ enrichedUser:", enrichedUser);
+
 	return (
 		<Sidebar collapsible='icon' {...props}>
 			<SidebarHeader>
@@ -69,7 +105,7 @@ export function AppSidebar({ data, ...props }: AppSidebarProps) {
 				<NavProjects projects={data.projects} />
 			</SidebarContent>
 			<SidebarFooter>
-				<NavUser user={data.user} />
+				<NavUser user={enrichedUser} />
 			</SidebarFooter>
 			<SidebarRail />
 		</Sidebar>

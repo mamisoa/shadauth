@@ -41,6 +41,7 @@ const ProfileDialog = ({
 	);
 
 	useEffect(() => {
+		// console.log("🚀 ~ actionData:", actionData);
 		if (actionData?.errors?.log) {
 			console.log(actionData.errors.log);
 		}
@@ -50,7 +51,6 @@ const ProfileDialog = ({
 				username: actionData.username as string,
 				firstname: actionData.firstname as string,
 				lastname: actionData.lastname as string,
-				name: actionData.username as string, // Update display name as well
 			});
 			setTimeout(() => onOpenChange(false), 2000);
 		}
