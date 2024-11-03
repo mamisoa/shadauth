@@ -43,7 +43,6 @@ export function DashboardPageCN(session: SessionType) {
 				plan: "Free",
 			},
 		],
-		// Inside your dashboard.tsx where navMain is defined
 		navMain: [
 			{
 				title: "Projects",
@@ -102,23 +101,7 @@ export function DashboardPageCN(session: SessionType) {
 				],
 			},
 		],
-		projects: [
-			{
-				name: "Design Engineering",
-				url: "#",
-				icon: "Frame" as IconName,
-			},
-			{
-				name: "Sales & Marketing",
-				url: "#",
-				icon: "PieChart" as IconName,
-			},
-			{
-				name: "Travel",
-				url: "#",
-				icon: "Map" as IconName,
-			},
-		],
+		projects: [],
 	};
 
 	return (

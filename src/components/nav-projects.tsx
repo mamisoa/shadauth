@@ -4,27 +4,15 @@
  * @description This file contains the `NavProjects` component, which renders a sidebar group for navigating projects.
  * It includes a list of projects, each with a name, URL, and icon, and provides a dropdown menu for additional actions.
  */
-import { Folder, Forward, MoreHorizontal, Trash2 } from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@/src/components/ui/dropdown-menu";
 import {
 	SidebarGroup,
 	SidebarGroupLabel,
 	SidebarMenu,
-	SidebarMenuAction,
 	SidebarMenuButton,
 	SidebarMenuItem,
-	useSidebar,
 } from "@/src/components/ui/sidebar";
-
-import { NavProjectsType } from "@/src/_types/sideBarTypes";
-import { IconMapper } from "@/src/components/dashboard/sidebar/IconMapper";
 
 /**
  * @function NavProjects
@@ -37,56 +25,14 @@ import { IconMapper } from "@/src/components/dashboard/sidebar/IconMapper";
  * @returns {JSX.Element} The rendered sidebar group component.
  */
 
-export function NavProjects({
-	projects,
-}: {
-	projects: NavProjectsType[];
-}): JSX.Element {
-	const { isMobile } = useSidebar();
-
+export function NavProjects(): JSX.Element {
 	return (
 		<SidebarGroup className='group-data-[collapsible=icon]:hidden'>
-			<SidebarGroupLabel>Projects</SidebarGroupLabel>
+			<SidebarGroupLabel className='text-base'>Projects</SidebarGroupLabel>
 			<SidebarMenu>
-				{projects.map((item) => (
-					<SidebarMenuItem key={item.name}>
-						<SidebarMenuButton asChild>
-							<a href={item.url}>
-								<IconMapper name={item.icon} />
-								<span>{item.name}</span>
-							</a>
-						</SidebarMenuButton>
-						<DropdownMenu>
-							<DropdownMenuTrigger asChild>
-								<SidebarMenuAction showOnHover>
-									<MoreHorizontal />
-									<span className='sr-only'>More</span>
-								</SidebarMenuAction>
-							</DropdownMenuTrigger>
-							<DropdownMenuContent
-								className='w-48 rounded-lg'
-								side={isMobile ? "bottom" : "right"}
-								align={isMobile ? "end" : "start"}>
-								<DropdownMenuItem>
-									<Folder className='text-muted-foreground' />
-									<span>View Project</span>
-								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<Forward className='text-muted-foreground' />
-									<span>Share Project</span>
-								</DropdownMenuItem>
-								<DropdownMenuSeparator />
-								<DropdownMenuItem>
-									<Trash2 className='text-muted-foreground' />
-									<span>Delete Project</span>
-								</DropdownMenuItem>
-							</DropdownMenuContent>
-						</DropdownMenu>
-					</SidebarMenuItem>
-				))}
 				<SidebarMenuItem>
-					<SidebarMenuButton className='text-sidebar-foreground/70'>
-						<MoreHorizontal className='text-sidebar-foreground/70' />
+					<SidebarMenuButton className='text-sidebar-foreground/70 text-base'>
+						<MoreHorizontal className='text-sidebar-foreground/70 h-5 w-5' />
 						<span>More</span>
 					</SidebarMenuButton>
 				</SidebarMenuItem>
