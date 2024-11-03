@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useActionState } from "react";
 import { Button } from "@/src/components/ui/button";
 import {
@@ -21,9 +21,6 @@ import {
 	AvatarImage,
 	AvatarFallback,
 } from "@/src/components/ui/avatar";
-import { on } from "events";
-import { set } from "zod";
-import { wait } from "@/src/_utils/time";
 
 interface ProfileDialogProps {
 	user: UserType; // Now using the updated UserType that includes id
