@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useActionState } from "react";
 import { Button } from "@/src/components/ui/button";
 import {
@@ -39,6 +39,7 @@ const ProfileDialog = ({
 		handleProfileUpdate,
 		undefined
 	);
+	const [closingDialog, setClosingDialog] = useState(false);
 
 	useEffect(() => {
 		// console.log("🚀 ~ actionData:", actionData);
@@ -52,15 +53,29 @@ const ProfileDialog = ({
 				firstname: actionData.firstname as string,
 				lastname: actionData.lastname as string,
 			});
+
 			setTimeout(() => onOpenChange(false), 2000);
+			// Clear the success message when the dialog closes
+			setClosingDialog(true);
+			setTimeout(() => {
+				setClosingDialog(false);
+				actionData.successMsg = undefined;
+			}, 2000);
 		}
 	}, [actionData, onOpenChange, onProfileUpdate]);
 	// TODO: user parameter from db are not loaded
 	// TODO: successdiv is not clear when dialog is closed
 	// TODO: username should not change the name navuser
+
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
-			<DialogContent className='sm:max-w-md bg-background border-border'>
+			<DialogContent
+				onCloseAutoFocus={() => {
+					if (actionData?.successMsg) {
+						delete actionData.successMsg;
+					}
+				}}
+				className='sm:max-w-md bg-background border-border'>
 				<DialogHeader>
 					<DialogTitle className='text-xl font-bold text-foreground'>
 						Profile Settings
