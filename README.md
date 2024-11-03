@@ -12,7 +12,9 @@ You need an email with SMTP access and Google credentials.
 
 #### Change permissions for PGadmin 4
 
+
 ```bash
+npx prisma migrate dev --name init
 sudo chown -R 5050:5050 pgadmin_data
 ```
 
