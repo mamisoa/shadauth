@@ -46,6 +46,7 @@ import {
 } from "@/src/components/ui/sidebar";
 import { prisma } from "@/prisma/prisma";
 
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 interface SidebarData {
 	user: UserType;
 	teams: TeamsType[];
@@ -95,14 +96,15 @@ export async function AppSidebar({ data, ...props }: AppSidebarProps) {
 
 	return (
 		<Sidebar collapsible='icon' {...props}>
-			<SidebarHeader></SidebarHeader>
+			<VisuallyHidden>
+				<SidebarHeader></SidebarHeader>
+			</VisuallyHidden>
 			<SidebarContent>
 				<NavMain items={data.navMain} />
 			</SidebarContent>
 			<SidebarFooter>
 				<NavUser user={enrichedUser} />
 			</SidebarFooter>
-			<SidebarRail />
 		</Sidebar>
 	);
 }
