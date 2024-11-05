@@ -37,7 +37,6 @@ export function NavUser({ user }: { user: UserType }) {
 	const [isProfileOpen, setIsProfileOpen] = useState(false);
 	const [currentUser, setCurrentUser] = useState(user);
 
-	// Update local user state when props change
 	useEffect(() => {
 		setCurrentUser(user);
 	}, [user]);
@@ -64,42 +63,50 @@ export function NavUser({ user }: { user: UserType }) {
 						<DropdownMenuTrigger asChild>
 							<SidebarMenuButton
 								size='lg'
-								className='data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground'>
-								<Avatar className='h-8 w-8 rounded-lg'>
+								className='data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground py-3'>
+								<Avatar className='h-10 w-10 rounded-lg'>
 									<AvatarImage
 										src={currentUser.avatar}
 										alt={currentUser.name}
 									/>
-									<AvatarFallback className='rounded-lg'>CN</AvatarFallback>
+									<AvatarFallback className='rounded-lg text-lg'>
+										{currentUser.firstname?.[0]}
+										{currentUser.lastname?.[0]}
+									</AvatarFallback>
 								</Avatar>
-								<div className='grid flex-1 text-left text-sm leading-tight'>
-									<span className='truncate font-semibold'>
+								<div className='grid flex-1 text-left leading-tight'>
+									<span className='truncate font-semibold text-lg'>
 										{currentUser.name}
 									</span>
-									<span className='truncate text-xs'>{currentUser.email}</span>
+									<span className='truncate text-base'>
+										{currentUser.email}
+									</span>
 								</div>
-								<ChevronsUpDown className='ml-auto size-4' />
+								<ChevronsUpDown className='ml-auto h-6 w-6' />
 							</SidebarMenuButton>
 						</DropdownMenuTrigger>
 						<DropdownMenuContent
-							className='w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg'
+							className='w-[--radix-dropdown-menu-trigger-width] min-w-64 rounded-lg'
 							side={isMobile ? "bottom" : "right"}
 							align='end'
 							sideOffset={4}>
 							<DropdownMenuLabel className='p-0 font-normal'>
-								<div className='flex items-center gap-2 px-1 py-1.5 text-left text-sm'>
-									<Avatar className='h-8 w-8 rounded-lg'>
+								<div className='flex items-center gap-3 p-3 text-left'>
+									<Avatar className='h-10 w-10 rounded-lg'>
 										<AvatarImage
 											src={currentUser.avatar}
 											alt={currentUser.name}
 										/>
-										<AvatarFallback className='rounded-lg'>CN</AvatarFallback>
+										<AvatarFallback className='rounded-lg text-lg'>
+											{currentUser.firstname?.[0]}
+											{currentUser.lastname?.[0]}
+										</AvatarFallback>
 									</Avatar>
-									<div className='grid flex-1 text-left text-sm leading-tight'>
-										<span className='truncate font-semibold'>
+									<div className='grid flex-1 text-left leading-tight'>
+										<span className='truncate font-semibold text-lg'>
 											{currentUser.name}
 										</span>
-										<span className='truncate text-xs'>
+										<span className='truncate text-base'>
 											{currentUser.email}
 										</span>
 									</div>
@@ -107,29 +114,33 @@ export function NavUser({ user }: { user: UserType }) {
 							</DropdownMenuLabel>
 							<DropdownMenuSeparator />
 							<DropdownMenuGroup>
-								<DropdownMenuItem>
-									<Sparkles />
+								<DropdownMenuItem className='p-3 text-lg gap-3'>
+									<Sparkles className='h-6 w-6' />
 									Upgrade to Pro
 								</DropdownMenuItem>
 							</DropdownMenuGroup>
 							<DropdownMenuSeparator />
 							<DropdownMenuGroup>
-								<DropdownMenuItem onClick={() => setIsProfileOpen(true)}>
-									<BadgeCheck />
+								<DropdownMenuItem
+									onClick={() => setIsProfileOpen(true)}
+									className='p-3 text-lg gap-3'>
+									<BadgeCheck className='h-6 w-6' />
 									Account
 								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<CreditCard />
+								<DropdownMenuItem className='p-3 text-lg gap-3'>
+									<CreditCard className='h-6 w-6' />
 									Billing
 								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<Bell />
+								<DropdownMenuItem className='p-3 text-lg gap-3'>
+									<Bell className='h-6 w-6' />
 									Notifications
 								</DropdownMenuItem>
 							</DropdownMenuGroup>
 							<DropdownMenuSeparator />
-							<DropdownMenuItem onClick={HandleSignOut}>
-								<LogOut />
+							<DropdownMenuItem
+								onClick={HandleSignOut}
+								className='p-3 text-lg gap-3'>
+								<LogOut className='h-6 w-6' />
 								Log out
 							</DropdownMenuItem>
 						</DropdownMenuContent>

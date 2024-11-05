@@ -47,7 +47,7 @@ export function DashboardPageCN(session: SessionType) {
 			{
 				title: "Projects",
 				url: "#",
-				icon: "FolderKanban",
+				icon: "FolderKanban" as IconName,
 				items: [
 					{
 						title: "Overview",
@@ -58,7 +58,7 @@ export function DashboardPageCN(session: SessionType) {
 			{
 				title: "Personas",
 				url: "#",
-				icon: "Users",
+				icon: "Users" as IconName,
 				items: [
 					{
 						title: "Descriptions",
@@ -73,7 +73,7 @@ export function DashboardPageCN(session: SessionType) {
 			{
 				title: "Interviews",
 				url: "#",
-				icon: "MessagesSquare",
+				icon: "MessagesSquare" as IconName,
 				items: [
 					{
 						title: "Test cards",
@@ -88,7 +88,7 @@ export function DashboardPageCN(session: SessionType) {
 			{
 				title: "Reporting",
 				url: "#",
-				icon: "LineChart",
+				icon: "LineChart" as IconName,
 				items: [
 					{
 						title: "Quantify",

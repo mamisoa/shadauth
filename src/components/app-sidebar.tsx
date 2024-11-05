@@ -36,7 +36,6 @@ import {
 import * as React from "react";
 
 import { NavMain } from "@/src/components/nav-main";
-import { NavProjects } from "@/src/components/nav-projects";
 import { NavUser } from "@/src/components/nav-user";
 import { TeamSwitcher } from "@/src/components/team-switcher";
 import {
@@ -52,7 +51,7 @@ interface SidebarData {
 	user: UserType;
 	teams: TeamsType[];
 	navMain: NavItemType[];
-	projects: NavProjectsType[];
+	projects: NavProjectsType[] | never[];
 }
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
@@ -102,7 +101,6 @@ export async function AppSidebar({ data, ...props }: AppSidebarProps) {
 			</SidebarHeader>
 			<SidebarContent>
 				<NavMain items={data.navMain} />
-				<NavProjects projects={data.projects} />
 			</SidebarContent>
 			<SidebarFooter>
 				<NavUser user={enrichedUser} />

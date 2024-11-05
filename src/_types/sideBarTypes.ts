@@ -1,36 +1,43 @@
 import { IconName } from "@/src/_types/iconTypes";
 
+export interface UserType {
+	name: string;
+	email: string;
+	avatar: string;
+	username?: string;
+	firstname?: string;
+	lastname?: string;
+	id?: string;
+}
+
 export interface TeamsType {
 	name: string;
-	logo: IconName; // Now using IconName type
+	logo: IconName;
 	plan: string;
 }
 
-export interface NavProjectsType {
-	name: string;
+export interface NavSubItem {
+	title: string;
 	url: string;
-	icon: IconName; // Now using IconName type
 }
 
 export interface NavItemType {
 	title: string;
 	url: string;
-	icon?: IconName; // Now using IconName type
+	icon: IconName;
 	isActive?: boolean;
-	items?: {
-		title: string;
-		url: string;
-	}[];
+	items?: NavSubItem[];
 }
 
-// sideBarTypes.ts
-export interface UserType {
-	id?: string;
+export interface NavProjectsType {
 	name: string;
-	email: string;
-	avatar?: string;
-	username?: string;
-	firstname?: string;
-	lastname?: string;
-	image?: string;
+	url: string;
+	icon: IconName;
+}
+
+export interface SidebarData {
+	user: UserType;
+	teams: TeamsType[];
+	navMain: NavItemType[];
+	projects: NavProjectsType[];
 }

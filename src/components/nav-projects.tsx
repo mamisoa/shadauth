@@ -28,7 +28,7 @@ import {
 export function NavProjects(): JSX.Element {
 	return (
 		<SidebarGroup className='group-data-[collapsible=icon]:hidden'>
-			<SidebarGroupLabel className='text-base'>Projects</SidebarGroupLabel>
+			<SidebarGroupLabel className='text-2xl'>Projects</SidebarGroupLabel>
 			<SidebarMenu>
 				<SidebarMenuItem>
 					<SidebarMenuButton className='text-sidebar-foreground/70 text-base'>
